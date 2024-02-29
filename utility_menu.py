@@ -3531,8 +3531,7 @@ class GUI(QtWidgets.QMainWindow):
         self.export_btn.clicked.connect(lambda: self.runit(export))
         self.copy_btn.clicked.connect(copy_pc)
         self.computer_entry.returnPressed.connect(lambda: self.runit(on_submit))
-        self.del_users_btn.clicked.connect(lambda: print("Fuck off, this is not supported any more") if
-                                           config.user.lower() != "c1490933" else self.runit(del_users))
+        self.del_users_btn.clicked.connect(lambda: self.runit(del_users))
         self.del_ost_btn.clicked.connect(lambda: self.runit(del_ost))
         self.del_zoom_btn.clicked.connect(lambda: self.runit(delete_zoom))
         self.fix_3_lang_btn.clicked.connect(lambda: self.runit(fix_3_languages))
