@@ -1,6 +1,7 @@
-# Utility-menu.py
+# Utility-menu-V2
 
 A utility menu I made while working as a help desk. It was made in between calls, so I'm aware it's far from perfect.
+This is an updated version (mostly UI).
 
 ## Installation
 
