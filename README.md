@@ -6,6 +6,8 @@ This is an updated version (mostly UI).
 
 ## Installation
 
+**Was written, tested and used with python3.11-12, windows 10**
+
 ```batch
 git clone https://github.com/GeneriicName/UI_V2
 cd UI_V2
