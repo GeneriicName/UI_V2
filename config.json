@@ -1,0 +1,15 @@
+{
+  "log": "\\\\path\\to\\logfile.log",
+  "domain": "DC=example,DC=domain,DC=com",
+  "print_servers": ["\\\\print_svr01", "\\\\print_svr02", "\\\\print_svr03"],
+  "max_workers": 30,
+  "to_delete": [["windows\\ccmcache", "Deleting ccsm cashe", "Deleted ccsm cashe"], ["temp"], ["Windows\\Temp", "Deleting windows temp files", "Deleted windows temp files"]],
+  "user_specific_delete": [],
+  "delete_user_temp": true,
+  "delete_edb": true,
+  "do_not_delete":["public","default", "default user", "all users", "desktop.ini"],
+  "start_with_exclude": ["username"],
+  "users_txt": "\\\\path\\to\\txt file",
+  "assets": "\\\\path\\to\\images",
+  "title": "your title here",
+}
