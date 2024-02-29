@@ -73,7 +73,7 @@ echo %computername% > "\\server\folder\%username%.txt"
 
 ## Additonal information
 
-**I removed some Features**
+**I removed some Features:**
 Because some features won't be relevant for anyone but the company i work at, or i can share them due to privacy.
 
 **I'm fully aware that this isn't a completed program. I uploaded it with some features missing (only relevant for the company I'm working for), and I wouldn't want to release sensitive information such as AD groups, users, paths, etc. However, this script contains a few nice features such as retrieving network printers from a remote computer, displaying user and computer information, multithreaded file deletion, and a fairly simple GUI. You can take and modify these features for your own project.**
