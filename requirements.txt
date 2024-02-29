@@ -1,0 +1,6 @@
+psutil==5.9.8
+pyad==0.6.0
+pyodbc==5.1.0
+PyQt6==6.6.1
+pywin32==306
+WMI==1.5.1
