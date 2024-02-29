@@ -1489,12 +1489,12 @@ def update_prnts():
 
 
 try:
-    with open("GUI_config.json", encoding="utf8") as config_file:
+    with open("config.json", encoding="utf8") as config_file:
         config = SetConfig(load(config_file))
         Thread(target=update_prnts, daemon=True).start()
 except FileNotFoundError:
     try:
-        FatalError(title="No GUI_config.json", prompt_="No GUI_config.json was found, exiting!")
+        FatalError(title="No config.json", prompt_="No config.json was found, exiting!")
         sys.exit(1)
     except Exception:
         sys.exit(69)
