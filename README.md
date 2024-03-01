@@ -56,11 +56,17 @@ echo %computername% > "\\server\folder\%username%.txt"
 
 **Reset print spooler.**
 
+**Sample function:** I removed the actual function (used to delete Cockpit profiles from all the servers) due to privacy, you can replace it with your own function.
+
 **Fix Internet Explorer:** Depending on your OS version, this might not work.
 
 **Fix cockpit printers:** This deletes the appropriate registry keys. Useful only if your organization uses Jetro Cockpit.
 
 **Close outlook:** This will close outlook and lync (skype) related processes.
+
+**Delete Zoom:** This will uninstall Zoom (64/32 bit) and Zoom outlook plugin, will go through the registry and remove any related keys (a known bug with zoom installation and uninstallation where multiple keys are created) takes a fair amount of time.
+
+**Delete Teams:** This will delete the msTeams application.
 
 **Export**: Export the current user's network printes and mapped drives into both a .txt file and a .bat file, the .bat file will attempt to re-install all the server-installed network printers or TCP/IP-WSD that were found on the server, as well as remap the network drives.
 
