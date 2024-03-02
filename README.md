@@ -4,7 +4,9 @@ A utility menu designed to streamline IT tasks and automate repetitive processes
 
 This is an updated version with a focus on UI improvements using PyQt6, licensed under GPL3.
 
-![Utility Menu Screenshot](https://github.com/GeneriicName/UI_V2/assets/139624416/1c906f12-4288-4e49-a3d4-ff2692c5b135)
+<div align="center">
+  <img src="https://github.com/GeneriicName/UI_V2/assets/139624416/1c906f12-4288-4e49-a3d4-ff2692c5b135" width="370" height="400" />
+</div>
 
 ## Features
 
