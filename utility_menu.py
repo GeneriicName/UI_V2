@@ -501,24 +501,25 @@ def delete_the_ost(signals: PassSignals) -> None:
 
     ost = listdir(fr"\\{pc}\c$\Users\{user_}\AppData\Local\Microsoft\Outlook")
     for file___ in ost:
-        if file___.endswith("ost"):
+        if file___.endswith("ost") or file___.endswith(".nst"):
             ost = fr"\\{pc}\c$\Users\{user_}\AppData\Local\Microsoft\Outlook\{file___}"
+            suffix_ = "OST" if file__.endswith(".ost") else "NST"
             try:
                 sleep(1)
                 rename(ost, f"{ost}{random():.3f}.old")
-                signals.print_success(Objects.console, "Successfully removed the ost file")
+                signals.print_success(Objects.console, f"Successfully removed the {suffix_} file")
                 return
             except FileExistsError:
                 try:
                     rename(ost, f"{ost}{random():.3f}.old")
-                    signals.print_success(Objects.console, "Successfully removed the ost file")
+                    signals.print_success(Objects.console, f"Successfully removed the {suffix_} file")
                     return
                 except:
                     log()
-                    signals.print_error(Objects.console, f"Could not Delete the OST file")
+                    signals.print_error(Objects.console, f"Could not Delete the {suffix_} file")
                     return
             except:
-                signals.print_error(Objects.console, f"Could not Delete the OST file")
+                signals.print_error(Objects.console, f"Could not Delete the {suffix_} file")
                 log()
                 return
     else:
