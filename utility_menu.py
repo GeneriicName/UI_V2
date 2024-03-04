@@ -475,57 +475,6 @@ def reset_spooler(signals: PassSignals) -> None:
         log()
 
 
-def delete_the_ost(signals: PassSignals) -> None:
-    """renames the ost file to .old with random digits to avoid conflict with duplicate ost filenames
-    handles shutting down outlook and skype on the remote computer so the OST could be renamed"""
-    user_ = config.current_user
-    pc = config.current_computer
-    pythoncom.CoInitialize()
-    with AskYesNo("OST deletion", f"Are you sure you want to delete the ost of {user_name_translation(user_)}",
-                  signals):
-        pass
-    if WorkerSignals.yes_no == (False, True):
-        signals.print("Canceled OST deletion")
-        return
-    host = WMI(computer=pc)
-    for procs in ("lync.exe", "outlook.exe", "UcMapi.exe"):
-        for proc in host.Win32_Process(name=procs):
-            if proc:
-                try:
-                    proc.Terminate()
-                except:
-                    log()
-    if not path.exists(fr"\\{pc}\c$\Users\{user_}\AppData\Local\Microsoft\Outlook"):
-        signals.print_error(Objects.console, "Could not find an OST file")
-        return
-
-    ost = listdir(fr"\\{pc}\c$\Users\{user_}\AppData\Local\Microsoft\Outlook")
-    for file___ in ost:
-        if file___.endswith("ost") or file___.endswith(".nst"):
-            ost = fr"\\{pc}\c$\Users\{user_}\AppData\Local\Microsoft\Outlook\{file___}"
-            suffix_ = "OST" if file__.endswith(".ost") else "NST"
-            try:
-                sleep(1)
-                rename(ost, f"{ost}{random():.3f}.old")
-                signals.print_success(Objects.console, f"Successfully removed the {suffix_} file")
-                return
-            except FileExistsError:
-                try:
-                    rename(ost, f"{ost}{random():.3f}.old")
-                    signals.print_success(Objects.console, f"Successfully removed the {suffix_} file")
-                    return
-                except:
-                    log()
-                    signals.print_error(Objects.console, f"Could not Delete the {suffix_} file")
-                    return
-            except:
-                signals.print_error(Objects.console, f"Could not Delete the {suffix_} file")
-                log()
-                return
-    else:
-        signals.print_error(Objects.console, f"Could not find an OST file")
-
-
 def my_rm(file_: str, bar: ProgressBar) -> None:
     """removes readonly files via changing the file permissions"""
     try:
@@ -690,7 +639,7 @@ def sample_function(signals: PassSignals):
 
 
 def del_ost(signals: PassSignals):
-    """renames the ost file to .old with random digits to avoid conflict with duplicate ost filenames
+    """renames the ost file to .old with random digits in order to avoid conflict with duplicate ost filenames
         handles shutting down outlook and skype on the remote computer so the OST could be renamed"""
     user_ = config.current_user
     pc = config.current_computer
@@ -710,33 +659,34 @@ def del_ost(signals: PassSignals):
                 except:
                     log()
     if not path.exists(fr"\\{pc}\c$\Users\{user_}\AppData\Local\Microsoft\Outlook"):
-        signals.print_error(Objects.console, f"Could not find an OST file")
+        signals.print_error(Objects.console, "Could not find an OST file")
         return
 
     ost = listdir(fr"\\{pc}\c$\Users\{user_}\AppData\Local\Microsoft\Outlook")
     for file___ in ost:
-        if file___.endswith("ost"):
+        if file___.endswith("ost") or file___.endswith(".nst"):
             ost = fr"\\{pc}\c$\Users\{user_}\AppData\Local\Microsoft\Outlook\{file___}"
+            suffix_ = "OST" if file___.endswith(".ost") else "NST"
             try:
                 sleep(1)
                 rename(ost, f"{ost}{random():.3f}.old")
-                signals.print_success(Objects.console, "Successfully removed the ost file")
+                signals.print_success(Objects.console, f"Successfully removed the {suffix_} file")
                 return
             except FileExistsError:
                 try:
                     rename(ost, f"{ost}{random():.3f}.old")
-                    signals.print_success(Objects.console, "Successfully removed the ost file")
+                    signals.print_success(Objects.console, f"Successfully removed the {suffix_} file")
                     return
                 except:
                     log()
-                    signals.print_error(Objects.console, "Could not Delete the OST file")
+                    signals.print_error(Objects.console, f"Could not Delete the {suffix_} file")
                     return
             except:
-                signals.print_error(Objects.console, "Could not Delete the OST file")
+                signals.print_error(Objects.console, f"Could not Delete the {suffix_} file")
                 log()
                 return
     else:
-        signals.print_error(Objects.console, "Could not Delete the OST file")
+        signals.print_error(Objects.console, f"Could not find an OST file")
 
 
 def del_users(signals: PassSignals) -> None:
